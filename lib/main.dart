@@ -29,6 +29,8 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  var listItem = ["Kelvin", "Reamur"];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,13 +48,13 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               Input(suhu: suhu),
-              DropdownButton(
-                items: [
-                  DropdownMenuItem(
-                      value: "Kelvin", child: Container(child: Text("Kelvin"))),
-                  DropdownMenuItem(
-                      value: "Reamur", child: Container(child: Text("Reamur"))),
-                ],
+              DropdownButton<String>(
+                items: listItem.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
                 value: null,
                 onChanged: (String changeValue) {},
               ),
