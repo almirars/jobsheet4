@@ -26,7 +26,6 @@ class _MyAppState extends State<MyApp> {
 
   void _hitungSuhu() {
     setState(() {
-      // _inputSuhu = double.parse(suhu.text);
       _inputUser = double.parse(suhu.text);
       _kelvin = _inputUser + 273;
       _reamur = (4 / 5) * _inputUser;
@@ -60,9 +59,13 @@ class _MyAppState extends State<MyApp> {
                   );
                 }).toList(),
                 value: null,
-                onChanged: (String changeValue) {},
+                onChanged: (String changeValue) {
+                  setState(() {
+                    _newValue = changeValue;
+                  });
+                },
               ),
-              Result(kelvin: _kelvin, reamor: _reamur),
+              Result(result: _result),
               Convert(konvertHandler: _hitungSuhu),
             ],
           ),
