@@ -20,15 +20,25 @@ class _MyAppState extends State<MyApp> {
   double _inputUser = 0;
   double _kelvin = 0;
   double _reamur = 0;
-  final inputController = TextEditingController();
+  final TextEditingController inputController = TextEditingController();
   String _newValue = "Kelvin";
   double _result = 0;
 
-  void _hitungSuhu() {
+  // void _hitungSuhu() {
+  //   setState(() {
+  //     _inputUser = double.parse(suhu.text);
+  //     _kelvin = _inputUser + 273;
+  //     _reamur = (4 / 5) * _inputUser;
+  //   });
+  // }
+
+  void hitungSuhu() {
     setState(() {
       _inputUser = double.parse(suhu.text);
-      _kelvin = _inputUser + 273;
-      _reamur = (4 / 5) * _inputUser;
+      if (_newValue == "Kelvin")
+        _result = _inputUser + 273;
+      else
+        _result = (4 / 5) * _inputUser;
     });
   }
 
@@ -58,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                     child: Text(value),
                   );
                 }).toList(),
-                value: null,
+                value: _newValue,
                 onChanged: (String changeValue) {
                   setState(() {
                     _newValue = changeValue;
@@ -66,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                 },
               ),
               Result(result: _result),
-              Convert(konvertHandler: _hitungSuhu),
+              Convert(convertHandler: hitungSuhu),
             ],
           ),
         ),
