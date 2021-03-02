@@ -20,17 +20,9 @@ class _MyAppState extends State<MyApp> {
   double _inputUser = 0;
   double _kelvin = 0;
   double _reamur = 0;
-  final TextEditingController inputController = TextEditingController();
+  final inputController = TextEditingController();
   String _newValue = "Kelvin";
   double _result = 0;
-
-  // void _hitungSuhu() {
-  //   setState(() {
-  //     _inputUser = double.parse(suhu.text);
-  //     _kelvin = _inputUser + 273;
-  //     _reamur = (4 / 5) * _inputUser;
-  //   });
-  // }
 
   void hitungSuhu() {
     setState(() {
@@ -72,6 +64,7 @@ class _MyAppState extends State<MyApp> {
                 onChanged: (String changeValue) {
                   setState(() {
                     _newValue = changeValue;
+                    hitungSuhu();
                   });
                 },
               ),
