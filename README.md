@@ -16,3 +16,11 @@
 4. dropdown click
 
 ![dd](https://user-images.githubusercontent.com/64759903/109636486-375efd80-7b7e-11eb-8969-76e6d7cc5fb8.jpeg)
+
+5. riwayat
+
+![riwayat1](https://user-images.githubusercontent.com/64759903/110142782-1b22c100-7e09-11eb-96fd-f5209f2263cd.jpeg)
+![riwayat2](https://user-images.githubusercontent.com/64759903/110142789-1cec8480-7e09-11eb-9227-2538036787ba.jpeg)
+![riwayat3](https://user-images.githubusercontent.com/64759903/110142787-1c53ee00-7e09-11eb-9b0b-d7869bb712bb.jpeg)
+
+
