@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'input.dart';
 import 'convert.dart';
 import 'result.dart';
+import 'textForm.dart';
+import 'riwayat.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,30 +13,31 @@ void main() {
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
-  _MyAppState createState() => _MyAppState();
+  State<StatefulWidget> createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   TextEditingController suhu = new TextEditingController();
 
   double _inputUser = 0;
-  double _kelvin = 0;
-  double _reamur = 0;
-  final inputController = TextEditingController();
-  String _newValue = "Kelvin";
   double _result = 0;
+  final inputController = TextEditingController();
+  List<String> listItem = ["Kelvin", "Reamur", "Farenheit"];
+  List<String> listViewItem = List<String>();
+  String _newValue = "Kelvin";
 
   void hitungSuhu() {
     setState(() {
       _inputUser = double.parse(suhu.text);
       if (_newValue == "Kelvin")
         _result = _inputUser + 273;
-      else
+      else if (_newValue == "Reamur")
         _result = (4 / 5) * _inputUser;
+      else
+        _result = (_inputUser * (9 / 5)) + 32;
+      listViewItem.add("$_newValue" ":" "$_result");
     });
   }
-
-  var listItem = ["Kelvin", "Reamur"];
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +54,8 @@ class _MyAppState extends State<MyApp> {
         body: Container(
           margin: EdgeInsets.all(8),
           child: Column(
-            children: [
-              Input(suhu: suhu),
+            children: <Widget>[
+              textForm(inputController: inputController),
               DropdownButton<String>(
                 items: listItem.map((String value) {
                   return DropdownMenuItem<String>(
@@ -70,6 +73,14 @@ class _MyAppState extends State<MyApp> {
               ),
               Result(result: _result),
               Convert(convertHandler: hitungSuhu),
+              Container(
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                child: Text(
+                  "Riwayat Konversi",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              riwayat(listViewItem: listViewItem),
             ],
           ),
         ),
