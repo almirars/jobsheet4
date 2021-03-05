@@ -55,7 +55,7 @@ class MyAppState extends State<MyApp> {
           margin: EdgeInsets.all(8),
           child: Column(
             children: <Widget>[
-              textForm(inputController: inputController),
+              textForm(inputController: suhu),
               DropdownButton<String>(
                 items: listItem.map((String value) {
                   return DropdownMenuItem<String>(
